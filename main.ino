@@ -1,7 +1,7 @@
 #include "servo_sweep.h"
 #include "robot_movement.h"
 #include "mpu.h"
-#include "ultrasonic.h"
+//#include "ultrasonic.h"
 
 // Define constants to represent movement states
 const int MOVING_FORWARD_STATE = 0;
@@ -16,6 +16,7 @@ int currentState = MOVING_FORWARD_STATE;
 void setup() {
   Serial.begin(9600);
   servo_setup();
+  //mpu_setup();
   delay(5000);
   hbridge_setup();
 }
@@ -49,6 +50,8 @@ void loop() {
       // Wait for a brief period in the stopped state
       stop_moving();
       delay(2000); // Adjust the delay as needed
+      servo_loop();
+
       currentState = ROTATE_RIGHT_STATE; // Move back to MOVING_FORWARD state
       break;
 
@@ -65,10 +68,17 @@ void loop() {
 
 
     case ROTATE_LEFT_STATE:
+
+    turn_left();
+    delay(1000);
+    stop_moving();
+    delay(2000);
+
+    currentState = MOVING_FORWARD_STATE; 
+
     break; 
   }
 
   // Add a delay to control the loop execution frequency
   delay(100); // Adjust delay as needed
 }
-
