@@ -7,6 +7,8 @@
 const int MOVING_FORWARD_STATE = 0;
 const int MOVING_BACKWARD_STATE = 1;
 const int STOPPED_STATE = 2;
+const int ROTATE_LEFT_STATE = 3;
+const int ROTATE_RIGHT_STATE = 4;
 
 // Initialize the state variable
 int currentState = MOVING_FORWARD_STATE;
@@ -39,15 +41,30 @@ void loop() {
     case MOVING_BACKWARD_STATE:
       // Move backward for a certain duration or until a certain condition is met
       move_backward();
-      delay(1000); // Adjust the delay as needed
+      delay(1500); // Adjust the delay as needed
       currentState = STOPPED_STATE; // Move to STOPPED state after backing up
       break;
 
     case STOPPED_STATE:
       // Wait for a brief period in the stopped state
-      delay(1000); // Adjust the delay as needed
-      currentState = MOVING_FORWARD_STATE; // Move back to MOVING_FORWARD state
+      stop_moving();
+      delay(3000); // Adjust the delay as needed
+      currentState = ROTATE_LEFT_STATE; // Move back to MOVING_FORWARD state
       break;
+
+    case ROTATE_LEFT_STATE:
+
+    turn_left();
+    delay(2000);
+    stop_moving();
+    delay(2000);
+
+    currentState = MOVING_FORWARD_STATE; 
+
+    break;
+
+    case ROTATE_RIGHT_STATE:
+    break; 
   }
 
   // Add a delay to control the loop execution frequency
