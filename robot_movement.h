@@ -13,40 +13,40 @@ pinMode(IN3, OUTPUT);
 pinMode(IN4, OUTPUT);
 }
 
-void hbridge_loop() {
-// Rotate the Motor A clockwise
-digitalWrite(IN1, HIGH);
-digitalWrite(IN2, LOW);
-delay(2000);
-// Motor A
-digitalWrite(IN1, HIGH);
-digitalWrite(IN2, HIGH);
-delay(500);
-// Rotate the Motor B clockwise
-digitalWrite(IN3, HIGH);
-digitalWrite(IN4, LOW);
-delay(2000);
-// Motor B
-digitalWrite(IN3, HIGH);
-digitalWrite(IN4, HIGH);
-delay(500);
-// Rotates the Motor A counter-clockwise
-digitalWrite(IN1, LOW);
-digitalWrite(IN2, HIGH);
-delay(2000);
-// Motor A
-digitalWrite(IN1, HIGH);
-digitalWrite(IN2, HIGH);
-delay(500);
-// Rotates the Motor B counter-clockwise
-digitalWrite(IN3, LOW);
-digitalWrite(IN4, HIGH);
-delay(2000);
-// Motor B
-digitalWrite(IN3, HIGH);
-digitalWrite(IN4, HIGH);
-delay(500);
-}
+// void hbridge_loop() {
+// // Rotate the Motor A clockwise
+// digitalWrite(IN1, HIGH);
+// digitalWrite(IN2, LOW);
+// delay(2000);
+// // Motor A
+// digitalWrite(IN1, HIGH);
+// digitalWrite(IN2, HIGH);
+// delay(500);
+// // Rotate the Motor B clockwise
+// digitalWrite(IN3, HIGH);
+// digitalWrite(IN4, LOW);
+// delay(2000);
+// // Motor B
+// digitalWrite(IN3, HIGH);
+// digitalWrite(IN4, HIGH);
+// delay(500);
+// // Rotates the Motor A counter-clockwise
+// digitalWrite(IN1, LOW);
+// digitalWrite(IN2, HIGH);
+// delay(2000);
+// // Motor A
+// digitalWrite(IN1, HIGH);
+// digitalWrite(IN2, HIGH);
+// delay(500);
+// // Rotates the Motor B counter-clockwise
+// digitalWrite(IN3, LOW);
+// digitalWrite(IN4, HIGH);
+// delay(2000);
+// // Motor B
+// digitalWrite(IN3, HIGH);
+// digitalWrite(IN4, HIGH);
+// delay(500);
+// }
 
 void move_forward() {
 
@@ -65,6 +65,26 @@ digitalWrite(IN1, HIGH); //Left
 digitalWrite(IN2, LOW);  // Left 
 digitalWrite(IN3, HIGH); // Right 
 digitalWrite(IN4, LOW); // Right 
+
+}
+
+void turn_left() {
+
+digitalWrite(IN1, HIGH); //Left Motor CW
+digitalWrite(IN2, LOW);
+digitalWrite(IN3, LOW); // Right Motor CCW
+digitalWrite(IN4, HIGH); 
+
+}
+
+void turn_right() {
+
+digitalWrite(IN1, LOW); //Left Motor CCW
+digitalWrite(IN2, HIGH); 
+digitalWrite(IN3, HIGH); // Right Motor CW
+digitalWrite(IN4, LOW); 
+
+
 }
 
 void stop_moving() {
