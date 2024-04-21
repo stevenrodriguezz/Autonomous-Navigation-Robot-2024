@@ -2,41 +2,37 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
-  
-Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
-void mpu_setup(void) 
-{
-  // Serial.begin(9600);
-  // Serial.println("Orientation Sensor Test"); Serial.println("");
+Adafruit_BNO055 bno = Adafruit_BNO055(55);
+double originalX = 0; // Global variable to store the original X position
+
+void mpu_setup() {
+  Serial.begin(9600);
+  delay(1000); // Delay for stability
   
-  // /* Initialise the sensor */
-  // if(!bno.begin())
-  // {
-  //   /* There was a problem detecting the BNO055 ... check your connections */
-  //   Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
-  //   while(1);
-  // }
-  
-  // delay(1000);
-    
-  // bno.setExtCrystalUse(true);
+  if (!bno.begin())
+  {
+    Serial.println("Failed to initialize BNO055 sensor!");
+    while (1); // Halts program execution indefinitely
+  }
+
+  Serial.println("BNO055 sensor initialized successfully!");
 }
 
-void mpu_loop(void) 
-{
-  /* Get a new sensor event */ 
-  sensors_event_t event; 
+void mpu_loop() {
+  /* Get a new sensor event */
+  sensors_event_t event;
   bno.getEvent(&event);
-  
+
+  if (originalX == 0) {
+    originalX = event.orientation.x; // Store the original X position
+    Serial.print("Original X: ");
+    Serial.println(originalX);
+  }
+
   /* Display the floating point data */
-  Serial.print("X: ");
-  Serial.print(event.orientation.x, 4);
-  Serial.print("\tY: ");
-  Serial.print(event.orientation.y, 4);
-  Serial.print("\tZ: ");
-  Serial.print(event.orientation.z, 4);
-  Serial.println("");
-  
-  delay(1000);
+  Serial.print("X-axis Orientation: ");
+  Serial.println(event.orientation.x);
+
+  delay(1000); // Delay for readability
 }
