@@ -68,7 +68,7 @@ digitalWrite(IN4, LOW); // Right
 
 }
 
-void turn_left() {
+void turn_right() {
 
 digitalWrite(IN1, HIGH); //Left Motor CW
 digitalWrite(IN2, LOW);
@@ -77,7 +77,7 @@ digitalWrite(IN4, HIGH);
 
 }
 
-void turn_right() {
+void turn_left() {
 
 digitalWrite(IN1, LOW); //Left Motor CCW
 digitalWrite(IN2, HIGH); 
