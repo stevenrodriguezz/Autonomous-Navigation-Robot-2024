@@ -27,7 +27,7 @@ void loop() {
   // Determine action based on object distance and current state
   switch (currentState) {
     case MOVING_FORWARD_STATE:
-      if (object_distance < 10) {
+      if (object_distance < 25) {
         // If object is too close, stop moving forward and start moving backward
         stop_moving();
         delay(3000);
@@ -41,21 +41,21 @@ void loop() {
     case MOVING_BACKWARD_STATE:
       // Move backward for a certain duration or until a certain condition is met
       move_backward();
-      delay(1500); // Adjust the delay as needed
+      delay(1000); // Adjust the delay as needed
       currentState = STOPPED_STATE; // Move to STOPPED state after backing up
       break;
 
     case STOPPED_STATE:
       // Wait for a brief period in the stopped state
       stop_moving();
-      delay(3000); // Adjust the delay as needed
-      currentState = ROTATE_LEFT_STATE; // Move back to MOVING_FORWARD state
+      delay(2000); // Adjust the delay as needed
+      currentState = ROTATE_RIGHT_STATE; // Move back to MOVING_FORWARD state
       break;
 
-    case ROTATE_LEFT_STATE:
+    case ROTATE_RIGHT_STATE:
 
-    turn_left();
-    delay(2000);
+    turn_right();
+    delay(1000);
     stop_moving();
     delay(2000);
 
@@ -63,10 +63,12 @@ void loop() {
 
     break;
 
-    case ROTATE_RIGHT_STATE:
+
+    case ROTATE_LEFT_STATE:
     break; 
   }
 
   // Add a delay to control the loop execution frequency
   delay(100); // Adjust delay as needed
 }
+
