@@ -1,8 +1,5 @@
 # Obstacle Avoidance Robot #
 
-
-# Autonomous Obstacle-Avoidance Robot
-
 ## Project Overview
 
 This project involves the development of an autonomous robot designed for obstacle avoidance and navigation using real-time sensor data. The robot utilizes a state machine to manage various actions, including moving forward, backward, and turning, allowing for adaptive navigation through dynamic environments.
