@@ -32,11 +32,3 @@ This project involves the development of an autonomous robot designed for obstac
 ### 5. **Ultrasonic Distance Sensor (`ultrasonic.h`)**
    - Measures the distance to nearby objects and provides real-time distance readings.
    - Prints distance data to the serial monitor for debugging and analysis.
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-
-Prints distance data to the serial monitor for debugging and analysis.
